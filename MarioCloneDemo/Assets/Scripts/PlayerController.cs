@@ -7,10 +7,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float runSpeed = 5.0f;
     [SerializeField] private float jumpForce = 5.0f;
     private Rigidbody2D rb;
+    [SerializeField] private float startPosition;
+    private Vector3 direction;
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+      if (Input.GetKeyDown(KeyCode.Space))
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
@@ -33,5 +35,14 @@ public class PlayerController : MonoBehaviour
     {
         Move();
         Jump();
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            direction = startPosition - collision.position;
+            transform.position = direction;
+        }
     }
 }
