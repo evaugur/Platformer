@@ -393,7 +393,7 @@ GameObject:
   - component: {fileID: 1292466214}
   - component: {fileID: 1292466213}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Invisible Wall
   m_TagString: Invisible Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -512,7 +512,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1330525707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1222,7 +1222,7 @@ GameObject:
   - component: {fileID: 1856397742}
   - component: {fileID: 1856397741}
   m_Layer: 0
-  m_Name: Square (1)
+  m_Name: Invisible Wall (1)
   m_TagString: Invisible Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

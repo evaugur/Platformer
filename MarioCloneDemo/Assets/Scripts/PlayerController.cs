@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float runSpeed = 5.0f;
     [SerializeField] private float jumpForce = 5.0f;
     private Rigidbody2D rb;
-    [SerializeField] private float startPosition;
+    private Vector3 startPosition;
     private Vector3 direction;
 
     private void Jump()
@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        startPosition = rb.position;
     }
 
     // Update is called once per frame
@@ -41,8 +42,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            direction = startPosition - collision.position;
-            transform.position = direction;
-        }
+           transform.position = startPosition;
+       }
     }
 }
