@@ -6,16 +6,12 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] float speed;
-    private float startLocation;
-    private float endLocation;
     [SerializeField] float distance;
     private Vector3 direction = Vector3.right;
 
     // Start is called before the first frame update
     void Start()
     {
-        startLocation = transform.position.x;
-        endLocation = startLocation + distance;
     }
 
     // Update is called once per frame
@@ -28,14 +24,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Invisible Wall")
         {
-            if (transform.position.x == endLocation)
-            {
-                direction = Vector3.left;
-            }
-            if (transform.position.x == startLocation)
-            {
-                direction = Vector3.right;
-            }
+            direction = -direction;
         }
     }
 }
