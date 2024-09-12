@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -9,12 +10,14 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector3 startPosition;
     private Vector3 direction;
+    private float jumpCounter = 1;
 
     private void Jump()
     {
-      if (Input.GetKeyDown(KeyCode.Space))
+      if (Input.GetKeyDown(KeyCode.Space) && jumpCounter == 1)
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            jumpCounter = 0;
         }
     }
 
@@ -40,9 +43,11 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
-        {
-           transform.position = startPosition;
-       }
+        jumpCounter = 1;
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        jumpCounter = 0;
     }
 }
